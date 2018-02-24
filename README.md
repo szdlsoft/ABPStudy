@@ -1,6 +1,7 @@
 # ABP 框架研究
-- 模块化
-- DDD
+- Module 模块化
+- DI 依赖注入
+- DDD 领域驱动开发
 - SOLID
 - UOW
 - DynamicWebApi
