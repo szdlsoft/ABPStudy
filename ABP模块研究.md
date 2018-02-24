@@ -1,4 +1,5 @@
-# ABP 模块
-## .NET 模块管理种种比较
-1.0 Prism
-2.0 
+# ABP Module 模块
+- ## Module和Assembly的关系
+
+- ## Module的生命周期
+- ## Module的配置
