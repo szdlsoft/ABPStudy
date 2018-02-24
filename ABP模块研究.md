@@ -70,5 +70,25 @@ ABP can resolve dependencies recursively beginning from the startup module and i
             sortedModules.ForEach(module => module.Instance.PostInitialize());
         }
 
+        public virtual void ShutdownModules()
+        {
+            Logger.Debug("Shutting down has been started");
 
-3. ## Module的配置
+            var sortedModules = _modules.GetSortedModuleListByDependency();
+            sortedModules.Reverse(); 倒序关闭
+            sortedModules.ForEach(sm => sm.Instance.Shutdown());
+
+            Logger.Debug("Shutting down completed.");
+        }
+
+
+3. ## Module的动态载入Plugin
+
+While modules are investigated beginning from startup module and going to dependencies, ABP can also load modules dynamically. AbpBootstrapper class defines PlugInSources property which can be used to add sources to dynamically load plugin modules. A plugin source can be any class implements IPlugInSource interface. PlugInFolderSource class implements it to get plugin modules from assemblies located in a folder.
+
+    public interface IPlugInSource
+    {
+        List<Type> GetModules();
+    }
+
+4. 
